@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Form\Type\PostType;
 use App\Service\PostServiceInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -108,6 +109,7 @@ class PostController extends AbstractController
         name: 'post_create',
         methods: 'GET|POST',
     )]
+    #[IsGranted('CREATE')]
     public function create(Request $request): Response
     {
         $post = new Post();
@@ -152,6 +154,7 @@ class PostController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: ['GET', 'POST'],
     )]
+    #[IsGranted('EDIT')]
     public function edit(Request $request, Post $post): Response
     {
         $form = $this->createForm(
@@ -194,6 +197,7 @@ class PostController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: ['GET', 'DELETE'],
     )]
+    #[IsGranted('DELETE')]
     public function delete(Request $request, Post $post): Response
     {
         $form = $this->createForm(

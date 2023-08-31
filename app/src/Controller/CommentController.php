@@ -9,6 +9,7 @@ use App\Entity\Comment;
 use App\Entity\Post;
 use App\Form\Type\CommentType;
 use App\Service\CommentServiceInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -140,6 +141,7 @@ class CommentController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET|PUT',
     )]
+    #[IsGranted('EDIT')]
     public function edit(Request $request, Comment $comment): Response
     {
         $form = $this->createForm(CommentType::class, $comment, [
@@ -185,6 +187,7 @@ class CommentController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET|DELETE',
     )]
+    #[IsGranted('DELETE')]
     public function delete(Request $request, Comment $comment): Response
     {
         $form = $this->createForm(FormType::class, $comment, [

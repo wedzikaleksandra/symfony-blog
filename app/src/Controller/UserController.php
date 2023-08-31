@@ -9,6 +9,7 @@ use App\Entity\User;
 use App\Form\Type\UserDataType;
 use App\Form\Type\UserPasswordType;
 use App\Service\UserServiceInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -57,6 +58,7 @@ class UserController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET',
     )]
+    #[IsGranted('VIEW')]
     public function show(User $user): Response
     {
         return $this->render(
@@ -79,6 +81,7 @@ class UserController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET|PUT',
     )]
+    #[IsGranted('EDIT')]
     public function editPassword(Request $request, User $user): Response
     {
         $form = $this->createForm(
@@ -129,6 +132,7 @@ class UserController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET|PUT',
     )]
+    #[IsGranted('EDIT')]
     public function edit(Request $request, User $user): Response
     {
         $form = $this->createForm(
