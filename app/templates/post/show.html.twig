@@ -9,24 +9,29 @@
     {% if post is defined and post|length %}
         <dl class="dl-horizontal">
             <dt>{{ 'label.created_at'|trans }}</dt>
-            <dd>{{ post.createdAt|date('Y/m/d') }}</dd>
+            <dd>{{ post.createdAt|format_date('short') }}</dd>
             <dt>{{ 'label.updated_at'|trans }}</dt>
-            <dd>{{ post.updatedAt|date('Y/m/d') }}</dd>
+            <dd>{{ post.updatedAt|format_date('short') }}</dd>
             <dt>{{ 'label.content'|trans }}</dt>
             <dd>{{ post.content }}</dd>
             <dt>{{ 'label.category'|trans }}</dt>
             <dd>{{ post.category.title }}</dd>
         </dl>
         <p>
-            <a href="{{ url('comment_create') }}" title="{{ 'action.create_comment'|trans }}">
-                {{ 'action.create_comment'|trans }}
-            </a>
             <a href="{{ url('post_index') }}" title="{{ 'action.back_to_list'|trans }}">
                 {{ 'action.back_to_list'|trans }}
             </a>
         </p>
 
-        <h1>{{ 'title.comment_list'|trans }}</h1>
+
+        <div class="d-flex align-items-center">
+            <h2>{{ 'title.comment_list'|trans }}</h2>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ url('comment_create') }}" title="{{ 'action.create'|trans }}" class="btn btn-primary ml-auto" style="margin-left: 20px;">
+                    {{ 'action.create'|trans }}
+                </a>
+            {% endif %}
+        </div>
         {% if pagination is defined and pagination.items|length %}
 
             <div class="navigation text-center">
@@ -56,6 +61,14 @@
                             <a href="{{ url('comment_show', {id: comment.id}) }}" title="{{ 'action.view'|trans }}">
                                 {{ 'action.view'|trans }}
                             </a>
+                            {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ url('comment_edit', {id: comment.id}) }}" title="{{ 'action.edit'|trans }}">
+                                {{ 'action.edit'|trans }}
+                            </a>
+                            <a href="{{ url('comment_delete', {id: comment.id}) }}" title="{{ 'action.delete'|trans }}">
+                                {{ 'action.delete'|trans }}
+                            </a>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}

@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Entity\Comment;
 use App\Repository\CommentRepository;
+use App\Repository\PostRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
@@ -15,6 +16,11 @@ class CommentService implements CommentServiceInterface
     private CommentRepository $commentRepository;
 
     /**
+     * Post repository.
+     */
+    private PostRepository $postRepository;
+
+    /**
      * Paginator.
      */
     private PaginatorInterface $paginator;
@@ -24,9 +30,10 @@ class CommentService implements CommentServiceInterface
      *
      * @param CommentRepository $commentRepository Comment repository
      */
-    public function __construct(CommentRepository $commentRepository, PaginatorInterface $paginator)
+    public function __construct(CommentRepository $commentRepository, PaginatorInterface $paginator, PostRepository $postRepository)
     {
         $this->commentRepository = $commentRepository;
+        $this->postRepository = $postRepository;
         $this->paginator = $paginator;
     }
 
@@ -50,9 +57,12 @@ class CommentService implements CommentServiceInterface
      * Save entity.
      *
      * @param Comment $comment Comment entity
+     * @param int $postId Post id
      */
-    public function save(Comment $comment): void
+    public function save(Comment $comment, int $postId): void
     {
+        $post = $this->postRepository->findOneBy(['id' => $postId]);
+        $comment->setPost($post);
         $this->commentRepository->save($comment);
     }
 
@@ -64,5 +74,15 @@ class CommentService implements CommentServiceInterface
     public function delete(Comment $comment): void
     {
         $this->commentRepository->delete($comment);
+    }
+
+    /**
+     * Update entity.
+     *
+     * @param Comment $comment
+     */
+    public function update(Comment $comment): void
+    {
+        $this->commentRepository->save($comment);
     }
 }

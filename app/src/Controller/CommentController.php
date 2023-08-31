@@ -6,12 +6,15 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
+use App\Entity\Post;
 use App\Form\Type\CommentType;
 use App\Service\CommentServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class CommentController.
@@ -25,13 +28,20 @@ class CommentController extends AbstractController
     private CommentServiceInterface $commentService;
 
     /**
+     * Translator.
+     */
+    private TranslatorInterface $translator;
+
+    /**
      * CommentController constructor.
      *
      * @param CommentServiceInterface $commentService Comment service
+     * @param TranslatorInterface     $translator     Translator
      */
-    public function __construct(CommentServiceInterface $commentService)
+    public function __construct(CommentServiceInterface $commentService, TranslatorInterface $translator)
     {
         $this->commentService = $commentService;
+        $this->translator = $translator;
     }
 
     /**
@@ -86,7 +96,7 @@ class CommentController extends AbstractController
      * @return Response HTTP response
      */
     #[Route(
-        '/create',
+        '/create/',
         name: 'comment_create',
         methods: 'GET|POST',
     )]
@@ -95,13 +105,14 @@ class CommentController extends AbstractController
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
+        $postId = $request->query->getInt('id');
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->commentService->save($comment);
+            $this->commentService->save($comment, $postId);
 
             $this->addFlash(
                 'success',
-                'message_created_successfully'
+                $this->translator->trans('message.created_successfully')
             );
 
             return $this->redirectToRoute('comment_index');
@@ -141,9 +152,12 @@ class CommentController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->commentService->save($comment);
+            $this->commentService->update($comment);
 
-            $this->addFlash('success', 'message_updated_successfully');
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.updated_successfully')
+            );
 
             return $this->redirectToRoute('comment_index');
         }
@@ -173,7 +187,7 @@ class CommentController extends AbstractController
     )]
     public function delete(Request $request, Comment $comment): Response
     {
-        $form = $this->createForm(CommentType::class, $comment, [
+        $form = $this->createForm(FormType::class, $comment, [
             'method' => 'DELETE',
             'action' => $this->generateUrl(
                 'comment_delete',
@@ -185,7 +199,10 @@ class CommentController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->commentService->delete($comment);
 
-            $this->addFlash('success', 'message_deleted_successfully');
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.deleted_successfully')
+            );
 
             return $this->redirectToRoute('comment_index');
         }

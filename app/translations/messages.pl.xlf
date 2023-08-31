@@ -150,12 +150,12 @@
                 <source>title.user_details</source>
                 <target>Szczegóły użytkownika</target>
             </trans-unit>
-            <trans-unit id="label.firstname">
-                <source>label.firstname</source>
+            <trans-unit id="label.firstName">
+                <source>label.firstName</source>
                 <target>Imię</target>
             </trans-unit>
-            <trans-unit id="label.lastname">
-                <source>label.lastname</source>
+            <trans-unit id="label.lastName">
+                <source>label.lastName</source>
                 <target>Nazwisko</target>
             </trans-unit>
             <trans-unit id="action.edit_password">
@@ -249,6 +249,42 @@
             <trans-unit id="label.none">
                 <source>label.none</source>
                 <target>Wybierz</target>
+            </trans-unit>
+            <trans-unit id="label.repeat_password">
+                <source>label.repeat_password</source>
+                <target>Powtórz hasło</target>
+            </trans-unit>
+            <trans-unit id="message_created_successfully">
+                <source>message_created_successfully</source>
+                <target>Pomyślnie utworzono</target>
+            </trans-unit>
+            <trans-unit id="message.category_contains_posts">
+                <source>message.category_contains_posts</source>
+                <target>Kategoria zawiera posty</target>
+            </trans-unit>
+            <trans-unit id="message.logged_in_as">
+                <source>message.logged_in_as</source>
+                <target>Jesteś zalogowany jako</target>
+            </trans-unit>
+            <trans-unit id="message.log_in">
+                <source>message.log_in</source>
+                <target>Zaloguj!</target>
+            </trans-unit>
+            <trans-unit id="message.please_sign_in">
+                <source>message.please_sign_in</source>
+                <target>Logowanie</target>
+            </trans-unit>
+            <trans-unit id="title.email">
+                <source>title.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="message.password">
+                <source>message.password</source>
+                <target>Hasło</target>
+            </trans-unit>
+            <trans-unit id="action.sign_in">
+                <source>action.sign_in</source>
+                <target>Zaloguj się</target>
             </trans-unit>
         </body>
     </file>

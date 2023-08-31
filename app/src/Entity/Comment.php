@@ -88,7 +88,6 @@ class Comment
      */
     #[ORM\ManyToOne(targetEntity: Post::class)]
     #[ORM\JoinColumn(nullable: false)]
-    #[Assert\Type('string')]
     private ?Post $post = null;
 
     /**

@@ -63,7 +63,7 @@ class RegistrationType extends AbstractType
             'firstName',
             TextType::class,
             [
-                'label' => 'label.firstname',
+                'label' => 'label.firstName',
                 'required' => true,
                 'attr' => ['max_length' => 64],
                 'constraints' => [
@@ -76,7 +76,7 @@ class RegistrationType extends AbstractType
             'lastName',
             TextType::class,
             [
-                'label' => 'label.lastname',
+                'label' => 'label.lastName',
                 'required' => true,
                 'attr' => ['max_length' => 64],
                 'constraints' => [

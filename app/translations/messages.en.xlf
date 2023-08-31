@@ -150,12 +150,12 @@
                 <source>title.user_details</source>
                 <target>User Details</target>
             </trans-unit>
-            <trans-unit id="label.firstname">
-                <source>label.firstname</source>
+            <trans-unit id="label.firstName">
+                <source>label.firstName</source>
                 <target>First Name</target>
             </trans-unit>
-            <trans-unit id="label.lastname">
-                <source>label.lastname</source>
+            <trans-unit id="label.lastName">
+                <source>label.lastName</source>
                 <target>Last Name</target>
             </trans-unit>
             <trans-unit id="action.edit_password">
@@ -241,6 +241,34 @@
             <trans-unit id="label.none">
                 <source>label.none</source>
                 <target>Choose</target>
+            </trans-unit>
+            <trans-unit id="message.category_contains_posts">
+                <source>message.category_contains_posts</source>
+                <target>Category contains posts</target>
+            </trans-unit>
+            <trans-unit id="message.logged_in_as">
+                <source>message.logged_in_as</source>
+                <target>You are logged in as</target>
+            </trans-unit>
+            <trans-unit id="message.log_in">
+                <source>message.log_in</source>
+                <target>Log In!</target>
+            </trans-unit>
+            <trans-unit id="message.please_sign_in">
+                <source>message.please_sign_in</source>
+                <target>Please Sign In</target>
+            </trans-unit>
+            <trans-unit id="title.email">
+                <source>title.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="message.password">
+                <source>message.password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="action.sign_in">
+                <source>action.sign_in</source>
+                <target>Sign In</target>
             </trans-unit>
         </body>
     </file>

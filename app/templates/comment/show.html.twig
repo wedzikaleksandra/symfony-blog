@@ -9,9 +9,9 @@
     {% if comment is defined and comment|length %}
         <dl class="dl-horizontal">
             <dt>{{ 'label.created_at'|trans }}</dt>
-            <dd>{{ comment.createdAt|date('Y/m/d') }}</dd>
+            <dd>{{ comment.createdAt|format_date('short') }}</dd>
             <dt>{{ 'label.updated_at'|trans }}</dt>
-            <dd>{{ comment.updatedAt|date('Y/m/d') }}</dd>
+            <dd>{{ comment.updatedAt|format_date('short') }}</dd>
             <dt>{{ 'label.email'|trans }}</dt>
             <dd>{{ comment.email }}</dd>
             <dt>{{ 'label.nickname'|trans }}</dt>
@@ -20,9 +20,6 @@
             <dd>{{  comment.content }}</dd>
         </dl>
         <p>
-            <a href="{{ url('comment_create') }}" title="{{ 'action.create_comment'|trans }}">
-                {{ 'action.create_comment'|trans }}
-            </a>
             <a href="{{ url('comment_index') }}" title="{{ 'action.back_to_list'|trans }}">
                 {{ 'action.back_to_list'|trans }}
             </a>

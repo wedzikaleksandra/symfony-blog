@@ -9,9 +9,11 @@ use App\Entity\Post;
 use App\Form\Type\PostType;
 use App\Service\PostServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class PostController.
@@ -25,13 +27,20 @@ class PostController extends AbstractController
     private PostServiceInterface $postService;
 
     /**
+     * Translator.
+     */
+    private TranslatorInterface $translator;
+
+    /**
      * PostController constructor.
      *
      * @param PostServiceInterface $postService Post service
+     * @param TranslatorInterface $translator Translator
      */
-    public function __construct(PostServiceInterface $postService)
+    public function __construct(PostServiceInterface $postService, TranslatorInterface $translator)
     {
         $this->postService = $postService;
+        $this->translator = $translator;
     }
 
     /**
@@ -115,7 +124,10 @@ class PostController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->postService->save($post);
 
-            $this->addFlash('success', 'message_created_successfully');
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message_created_successfully')
+            );
 
             return $this->redirectToRoute('post_index');
         }
@@ -151,7 +163,10 @@ class PostController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->postService->save($post);
 
-            $this->addFlash('success', 'message_updated_successfully');
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.updated_successfully')
+            );
 
             return $this->redirectToRoute('post_index');
         }
@@ -182,7 +197,7 @@ class PostController extends AbstractController
     public function delete(Request $request, Post $post): Response
     {
         $form = $this->createForm(
-            PostType::class,
+            FormType::class,
             $post,
             [
                 'method' => 'DELETE',
@@ -197,7 +212,10 @@ class PostController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->postService->delete($post);
 
-            $this->addFlash('success', 'message_deleted_successfully');
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.deleted_successfully')
+            );
 
             return $this->redirectToRoute('post_index');
         }

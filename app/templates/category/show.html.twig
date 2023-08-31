@@ -9,9 +9,9 @@
     {% if category is defined and category|length %}
         <dl class="dl-horizontal">
             <dt>{{ 'label.created_at'|trans }}</dt>
-            <dd>{{ category.createdAt|date('Y/m/d') }}</dd>
+            <dd>{{ category.createdAt|format_date('short') }}</dd>
             <dt>{{ 'label.updated_at'|trans }}</dt>
-            <dd>{{ category.updatedAt|date('Y/m/d') }}</dd>
+            <dd>{{ category.updatedAt|format_date('short') }}</dd>
         </dl>
         <p>
             <a href="{{ url('category_index') }}" title="{{ 'action.back_to_list'|trans }}">
