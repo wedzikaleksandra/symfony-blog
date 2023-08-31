@@ -44,7 +44,6 @@ class UserController extends AbstractController
         $this->userService = $userService;
     }
 
-
     /**
      * Show action.
      *

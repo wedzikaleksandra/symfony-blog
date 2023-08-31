@@ -7,7 +7,6 @@ namespace App\DataFixtures;
 
 use App\Entity\Category;
 use App\Entity\Post;
-use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
@@ -33,12 +32,12 @@ class PostFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             $post->setTitle($this->faker->sentence);
             $post->setSlug($this->faker->word);
             $post->setCreatedAt(
-                DateTimeImmutable::createFromMutable(
+                \DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-100 days', '-1 days')
                 )
             );
             $post->setUpdatedAt(
-                DateTimeImmutable::createFromMutable(
+                \DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-100 days', '-1 days')
                 )
             );
@@ -46,7 +45,7 @@ class PostFixtures extends AbstractBaseFixtures implements DependentFixtureInter
                 $this->faker->numberBetween(1, 4),
                 true
             ));
-            
+
             /** @var Category $category */
             $category = $this->getRandomReference('categories');
             $post->setCategory($category);

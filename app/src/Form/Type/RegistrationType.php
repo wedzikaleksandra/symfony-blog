@@ -25,7 +25,7 @@ class RegistrationType extends AbstractType
      * Build form.
      *
      * @param FormBuilderInterface $builder Form builder interface
-     * @param array $options Form options
+     * @param array                $options Form options
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -38,7 +38,7 @@ class RegistrationType extends AbstractType
                 'attr' => ['max_length' => 64],
                 'constraints' => [
                     new NotBlank(),
-                    new Email()
+                    new Email(),
                 ],
             ]
         );

@@ -32,7 +32,7 @@ class CommentRepository extends ServiceEntityRepository
      *
      * @constant int
      */
-    const PAGINATOR_ITEMS_PER_PAGE = 10;
+    public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     /**
      * CommentRepository constructor.
@@ -62,6 +62,13 @@ class CommentRepository extends ServiceEntityRepository
         return $queryBuilder;
     }
 
+    /**
+     * Query comments by post.
+     *
+     * @param Post $post Post entity
+     *
+     * @return QueryBuilder Query builder
+     */
     public function queryByPost(Post $post): QueryBuilder
     {
         $queryBuilder = $this->getOrCreateQueryBuilder();
@@ -81,7 +88,6 @@ class CommentRepository extends ServiceEntityRepository
      * Save entity.
      *
      * @param Comment $comment Comment entity
-     * @return void
      */
     public function save(Comment $comment): void
     {

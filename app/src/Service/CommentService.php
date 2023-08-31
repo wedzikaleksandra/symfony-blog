@@ -1,4 +1,7 @@
 <?php
+/**
+ * Comment service interface.
+ */
 
 namespace App\Service;
 
@@ -8,6 +11,9 @@ use App\Repository\PostRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
+/**
+ * Interface CommentServiceInterface.
+ */
 class CommentService implements CommentServiceInterface
 {
     /**
@@ -28,7 +34,9 @@ class CommentService implements CommentServiceInterface
     /**
      * CommentService constructor.
      *
-     * @param CommentRepository $commentRepository Comment repository
+     * @param CommentRepository  $commentRepository Comment repository
+     * @param PaginatorInterface $paginator         Paginator
+     * @param PostRepository     $postRepository    Post repository
      */
     public function __construct(CommentRepository $commentRepository, PaginatorInterface $paginator, PostRepository $postRepository)
     {
@@ -57,7 +65,7 @@ class CommentService implements CommentServiceInterface
      * Save entity.
      *
      * @param Comment $comment Comment entity
-     * @param int $postId Post id
+     * @param int     $postId  Post id
      */
     public function save(Comment $comment, int $postId): void
     {
@@ -79,7 +87,7 @@ class CommentService implements CommentServiceInterface
     /**
      * Update entity.
      *
-     * @param Comment $comment
+     * @param Comment $comment Comment entity
      */
     public function update(Comment $comment): void
     {

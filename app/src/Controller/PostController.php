@@ -36,7 +36,7 @@ class PostController extends AbstractController
      * PostController constructor.
      *
      * @param PostServiceInterface $postService Post service
-     * @param TranslatorInterface $translator Translator
+     * @param TranslatorInterface  $translator  Translator
      */
     public function __construct(PostServiceInterface $postService, TranslatorInterface $translator)
     {
@@ -70,8 +70,8 @@ class PostController extends AbstractController
     /**
      * Show action.
      *
-     * @param Post $post Post entity
-     *
+     * @param Post    $post    Post entity
+     * @param Request $request HTTP request
      *
      * @return Response HTTP response
      */
@@ -92,7 +92,7 @@ class PostController extends AbstractController
             'post/show.html.twig',
             [
                 'post' => $post,
-                'pagination' => $commentByPostPagedList
+                'pagination' => $commentByPostPagedList,
             ]
         );
     }
@@ -128,7 +128,7 @@ class PostController extends AbstractController
 
             $this->addFlash(
                 'success',
-                $this->translator->trans('message_created_successfully')
+                $this->translator->trans('message.created_successfully')
             );
 
             return $this->redirectToRoute('post_index');
@@ -144,7 +144,7 @@ class PostController extends AbstractController
      * Edit action.
      *
      * @param Request $request HTTP request
-     * @param Post $post Post entity
+     * @param Post    $post    Post entity
      *
      * @return Response HTTP response
      */
@@ -187,7 +187,7 @@ class PostController extends AbstractController
      * Delete action.
      *
      * @param Request $request HTTP request
-     * @param Post $post Post entity
+     * @param Post    $post    Post entity
      *
      * @return Response HTTP response
      */
@@ -232,5 +232,4 @@ class PostController extends AbstractController
             ]
         );
     }
-
 }

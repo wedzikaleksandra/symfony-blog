@@ -1,4 +1,7 @@
 <?php
+/**
+ * Post repository.
+ */
 
 namespace App\Repository;
 

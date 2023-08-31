@@ -87,8 +87,10 @@ class CategoryRepository extends ServiceEntityRepository
     /**
      * Query by category.
      *
-     * @param int $id
+     * @param int $id Category id
+     *
      * @return Category|null Query builder
+     *
      * @throws NonUniqueResultException
      */
     public function findOneById(int $id): ?Category
@@ -116,5 +118,4 @@ class CategoryRepository extends ServiceEntityRepository
     {
         return $queryBuilder ?? $this->createQueryBuilder('category');
     }
-
 }

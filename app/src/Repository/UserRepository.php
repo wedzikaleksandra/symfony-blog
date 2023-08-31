@@ -37,6 +37,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     }// end __construct()
 
     /**
+     * Save record.
+     *
      * @param User $entity User entity
      * @param bool $flush  Flush entity
      */
@@ -51,6 +53,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
+     *
+     * @param PasswordAuthenticatedUserInterface $user              User entity
+     * @param string                             $newHashedPassword New hashed password
      */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {

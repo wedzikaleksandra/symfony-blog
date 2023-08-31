@@ -254,10 +254,6 @@
                 <source>label.repeat_password</source>
                 <target>Powtórz hasło</target>
             </trans-unit>
-            <trans-unit id="message_created_successfully">
-                <source>message_created_successfully</source>
-                <target>Pomyślnie utworzono</target>
-            </trans-unit>
             <trans-unit id="message.category_contains_posts">
                 <source>message.category_contains_posts</source>
                 <target>Kategoria zawiera posty</target>

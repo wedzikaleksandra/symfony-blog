@@ -13,7 +13,6 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
  */
 interface CommentServiceInterface
 {
-
     /**
      * Get paginated list.
      *
@@ -27,7 +26,7 @@ interface CommentServiceInterface
      * Save entity.
      *
      * @param Comment $comment Comment entity
-     * @param int $postId Post id
+     * @param int     $postId  Post id
      */
     public function save(Comment $comment, int $postId): void;
 
@@ -41,7 +40,7 @@ interface CommentServiceInterface
     /**
      * Update entity.
      *
-     * @param Comment $comment
+     * @param Comment $comment Comment entity
      */
     public function update(Comment $comment): void;
 }

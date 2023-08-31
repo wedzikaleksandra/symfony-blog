@@ -37,8 +37,8 @@ class CategoryService implements CategoryServiceInterface
      * CategoryService constructor.
      *
      * @param CategoryRepository $categoryRepository Category repository
-     * @param PostRepository $postRepository Post repository
-     * @param PaginatorInterface $paginator Paginator
+     * @param PaginatorInterface $paginator          Paginator
+     * @param PostRepository     $postRepository     Post repository
      */
     public function __construct(CategoryRepository $categoryRepository, PaginatorInterface $paginator, PostRepository $postRepository)
     {
@@ -66,7 +66,7 @@ class CategoryService implements CategoryServiceInterface
     /**
      * Get paginated list by category.
      *
-     * @param int $page Page number
+     * @param int      $page     Page number
      * @param Category $category Category entity
      *
      * @return PaginationInterface<string, mixed> Paginated list
@@ -121,7 +121,9 @@ class CategoryService implements CategoryServiceInterface
      * Find one by id.
      *
      * @param int $id Category id
+     *
      * @return Category|null Category entity
+     *
      * @throws NonUniqueResultException
      */
     public function findOneById(int $id): ?Category

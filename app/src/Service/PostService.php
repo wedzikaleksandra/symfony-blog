@@ -34,9 +34,9 @@ class PostService implements PostServiceInterface
     /**
      * CategoryService constructor.
      *
-     * @param PostRepository     $postRepository Post repository
-     * @param CommentRepository $commentRepository Comment repository
-     * @param PaginatorInterface $paginator      Paginator
+     * @param PostRepository     $postRepository    Post repository
+     * @param PaginatorInterface $paginator         Paginator
+     * @param CommentRepository  $commentRepository Comment repository
      */
     public function __construct(PostRepository $postRepository, PaginatorInterface $paginator, CommentRepository $commentRepository)
     {
@@ -62,9 +62,12 @@ class PostService implements PostServiceInterface
     }
 
     /**
-     * @param int $page
-     * @param Post $post
-     * @return PaginationInterface
+     * Paginated list of comments by post.
+     *
+     * @param int  $page Page number
+     * @param Post $post Post entity
+     *
+     * @return PaginationInterface Paginated list
      */
     public function createCommentByPostPaginatedList(int $page, Post $post): PaginationInterface
     {

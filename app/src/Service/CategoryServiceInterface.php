@@ -25,7 +25,7 @@ interface CategoryServiceInterface
     /**
      * Get paginated list by category.
      *
-     * @param int $page Page number
+     * @param int      $page     Page number
      * @param Category $category Category entity
      *
      * @return PaginationInterface<string, mixed> Paginated list
@@ -52,6 +52,7 @@ interface CategoryServiceInterface
      * Find one by id.
      *
      * @param int $id Category id
+     *
      * @return Category|null Category entity
      */
     public function findOneById(int $id): ?Category;

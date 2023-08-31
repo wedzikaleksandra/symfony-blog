@@ -6,7 +6,6 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
-use App\Entity\Post;
 use App\Form\Type\CommentType;
 use App\Service\CommentServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -218,5 +217,4 @@ class CommentController extends AbstractController
             ]
         );
     }
-
 }

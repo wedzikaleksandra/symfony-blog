@@ -25,10 +25,10 @@ interface PostServiceInterface
     /**
      * Get paginated list by post.
      *
-     * @param int $page
-     * @param Post $post
+     * @param int  $page Page number
+     * @param Post $post Post entity
      *
-     * @return PaginationInterface
+     * @return PaginationInterface Paginated list
      */
     public function createCommentByPostPaginatedList(int $page, Post $post): PaginationInterface;
 
@@ -45,6 +45,4 @@ interface PostServiceInterface
      * @param Post $post Post entity
      */
     public function delete(Post $post): void;
-
-
 }
