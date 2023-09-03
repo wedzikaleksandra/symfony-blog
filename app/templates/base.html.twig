@@ -12,10 +12,10 @@
     {% endblock %}
 </head>
 <body>
+{% include'default/_navbar.html.twig' %}
 <main role="main" class="container-fluid">
     <div class="container-fluid">
         {% include 'default/_flash_messages.html.twig' %}
-        {% include'default/_navbar.html.twig' %}
         {% block body %}{% endblock %}
     </div>
 </main>

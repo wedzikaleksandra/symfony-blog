@@ -282,6 +282,14 @@
                 <source>action.sign_in</source>
                 <target>Zaloguj się</target>
             </trans-unit>
+            <trans-unit id="message.password_not_valid">
+                <source>message.password_not_valid</source>
+                <target>Hasło musi zawierać co najmniej jedną cyfrę i jeden znak specjalny</target>
+            </trans-unit>
+            <trans-unit id="message.passwords_not_match">
+                <source>message.passwords_not_match</source>
+                <target>Hasła nie pasują</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

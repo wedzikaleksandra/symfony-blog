@@ -270,6 +270,14 @@
                 <source>action.sign_in</source>
                 <target>Sign In</target>
             </trans-unit>
+            <trans-unit id="message.password_not_valid">
+                <source>message.password_not_valid</source>
+                <target>Password must contain at least one number and one special sign</target>
+            </trans-unit>
+            <trans-unit id="message.passwords_not_match">
+                <source>message.passwords_not_match</source>
+                <target>Passwords don't match</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

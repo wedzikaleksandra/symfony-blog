@@ -115,7 +115,7 @@ class CommentController extends AbstractController
                 $this->translator->trans('message.created_successfully')
             );
 
-            return $this->redirectToRoute('comment_index');
+            return $this->redirectToRoute('post_show', ['id' => $postId]);
         }
 
         return $this->render(
