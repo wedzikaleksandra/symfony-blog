@@ -29,9 +29,9 @@ class UserPasswordType extends AbstractType
     /**
      * CommentController constructor.
      *
-     * @param TranslatorInterface     $translator     Translator
+     * @param TranslatorInterface $translator Translator
      */
-    public function __construct( TranslatorInterface $translator)
+    public function __construct(TranslatorInterface $translator)
     {
         $this->translator = $translator;
     }
@@ -51,7 +51,7 @@ class UserPasswordType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options' => ['label' => 'label.password'],
                 'second_options' => ['label' => 'label.repeat_password'],
-                'invalid_message' =>  $this->translator->trans('message.passwords_not_match'),
+                'invalid_message' => $this->translator->trans('message.passwords_not_match'),
                 'constraints' => [
                     new NotBlank(),
                     new Length(['min' => 8]),

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Post controller tests.
+ */
 
 namespace App\Tests\Controller;
 
@@ -16,6 +19,9 @@ use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Class PostControllerTest.
+ */
 class PostControllerTest extends WebTestCase
 {
     /**
