@@ -206,7 +206,16 @@ class PostControllerTest extends WebTestCase
         return $user;
     }
 
-    private function createCategory($name): Category
+    /**
+     * Create Category.
+     *
+     * @param string $name Category name
+     *
+     * @return Category Category entity
+     *
+     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
+     */
+    private function createCategory(string $name): Category
     {
         $category = new Category();
         $category->setTitle($name);

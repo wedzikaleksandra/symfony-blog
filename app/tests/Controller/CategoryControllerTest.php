@@ -257,6 +257,10 @@ class CategoryControllerTest extends WebTestCase
      *
      * @param User $user User entity
      * @param Category $testCategory Category entity
+     *
+     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
+     *
+     * @return Post Post entity
      */
     private function createPost(User $user, Category $testCategory): Post
     {
