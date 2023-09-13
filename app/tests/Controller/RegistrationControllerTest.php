@@ -69,7 +69,7 @@ class RegistrationControllerTest extends WebTestCase
             [
                'registration' => [
                    'email' => $expectedEmail,
-                   'password' => 'p@55w0rd',
+                   'password' => 'p@55w0rdAAA',
                    'firstName' => 'John',
                    'lastName' => 'Doe',
                ],
