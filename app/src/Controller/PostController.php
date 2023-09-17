@@ -109,7 +109,6 @@ class PostController extends AbstractController
         name: 'post_create',
         methods: 'GET|POST',
     )]
-    #[IsGranted('CREATE')]
     public function create(Request $request): Response
     {
         $post = new Post();
@@ -154,7 +153,7 @@ class PostController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: ['GET', 'POST'],
     )]
-    #[IsGranted('EDIT')]
+    #[IsGranted('EDIT', subject: 'post')]
     public function edit(Request $request, Post $post): Response
     {
         $form = $this->createForm(
@@ -197,7 +196,7 @@ class PostController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: ['GET', 'DELETE'],
     )]
-    #[IsGranted('DELETE')]
+    #[IsGranted('DELETE', subject: 'post')]
     public function delete(Request $request, Post $post): Response
     {
         $form = $this->createForm(

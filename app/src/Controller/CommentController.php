@@ -140,7 +140,7 @@ class CommentController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET|PUT',
     )]
-    #[IsGranted('EDIT')]
+    #[IsGranted('EDIT', subject: 'comment')]
     public function edit(Request $request, Comment $comment): Response
     {
         $form = $this->createForm(CommentType::class, $comment, [
@@ -186,7 +186,7 @@ class CommentController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET|DELETE',
     )]
-    #[IsGranted('DELETE')]
+    #[IsGranted('DELETE', subject: 'comment')]
     public function delete(Request $request, Comment $comment): Response
     {
         $form = $this->createForm(FormType::class, $comment, [

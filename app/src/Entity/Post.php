@@ -30,7 +30,10 @@ class Post
     /**
      * Title.
      */
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 64)]
+    #[Assert\NotBlank]
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 3, max: 64)]
     private ?string $title = null;
 
     /**
@@ -46,6 +49,9 @@ class Post
      * Content.
      */
     #[ORM\Column(type: 'text')]
+    #[Assert\NotBlank]
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 3)]
     private ?string $content = null;
 
     /**

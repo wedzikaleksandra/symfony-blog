@@ -1,19 +1,20 @@
 <?php
 /**
- * Post voter.
+ * Comment voter.
  */
 
 namespace App\Security\Voter;
 
+use App\Entity\Comment;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Class PostVoter.
+ * Class CommentVoter.
  */
-class AppVoter extends Voter
+class CommentVoter extends Voter
 {
     /**
      * Edit permission.
@@ -35,13 +36,6 @@ class AppVoter extends Voter
      * @const string
      */
     public const DELETE = 'DELETE';
-
-    /**
-     * Create permission.
-     *
-     * @const string
-     */
-    public const CREATE = 'CREATE';
 
     /**
      * Security helper.
@@ -68,7 +62,8 @@ class AppVoter extends Voter
      */
     protected function supports(string $attribute, $subject): bool
     {
-        return in_array($attribute, [self::EDIT, self::VIEW, self::DELETE, self::CREATE]);
+        return in_array($attribute, [self::EDIT, self::VIEW, self::DELETE])
+            && $subject instanceof Comment;
     }
 
     /**
@@ -88,18 +83,12 @@ class AppVoter extends Voter
             return false;
         }
 
-        switch ($attribute) {
-            case self::EDIT:
-                return $this->canEdit();
-            case self::CREATE:
-                return $this->canCreate();
-            case self::VIEW:
-                return $this->canView();
-            case self::DELETE:
-                return $this->canDelete();
-        }
-
-        return false;
+        return match ($attribute) {
+            self::EDIT => $this->canEdit(),
+            self::VIEW => $this->canView(),
+            self::DELETE => $this->canDelete(),
+            default => false,
+        };
     }
 
     /**
@@ -128,16 +117,6 @@ class AppVoter extends Voter
      * @return bool Result
      */
     private function canDelete(): bool
-    {
-        return $this->security->isGranted('ROLE_ADMIN');
-    }
-
-    /**
-     * Checks if user can create.
-     *
-     * @return bool Result
-     */
-    private function canCreate(): bool
     {
         return $this->security->isGranted('ROLE_ADMIN');
     }

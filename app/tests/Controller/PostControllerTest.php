@@ -110,6 +110,35 @@ class PostControllerTest extends WebTestCase
         $this->assertSelectorTextContains('html', $expectedPost->getTitle());
     }
 
+    /**
+     * Test create post.
+     *
+     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
+     */
+    public function testCreatePost(): void
+    {
+        // given
+        $user = $this->createUser([UserRole::ROLE_ADMIN->value], 'test_post_create@example.com');
+        $this->httpClient->loginUser($user);
+        $category = $this->createCategory('Test Category 14');
+        $this->httpClient->request('GET', self::TEST_ROUTE . '/create');
+
+        // when
+        $this->httpClient->submitForm(
+            'Utwórz',
+            ['post' =>
+                [
+                    'title' => 'Test Post',
+                    'content' => 'TestPostCreated',
+                    'category' => $category->getId(),
+                ]
+            ]
+        );
+
+        // then
+        $this->assertEquals(302, $this->httpClient->getResponse()->getStatusCode());
+    }
+
 
     /**
      * Test edit post.
@@ -135,8 +164,8 @@ class PostControllerTest extends WebTestCase
         $expectedNewPostTitle = 'test post edit';
 
         $this->httpClient->request(
-            'GET', self::TEST_ROUTE.'/'.
-            $testPostId.'/edit'
+            'GET', self::TEST_ROUTE . '/' .
+            $testPostId . '/edit'
         );
 
         // when
@@ -171,7 +200,7 @@ class PostControllerTest extends WebTestCase
         $postRepository->save($testPost);
         $testPostId = $testPost->getId();
 
-        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$testPostId.'/delete');
+        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $testPostId . '/delete');
 
         // when
         $this->httpClient->submitForm(
