@@ -102,10 +102,15 @@ class CommentController extends AbstractController
     )]
     public function create(Request $request): Response
     {
+        $postId = $request->query->getInt('id');
+
+        if (!$postId){
+            return $this->redirectToRoute('post_index');
+        }
+
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
-        $postId = $request->query->getInt('id');
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->commentService->save($comment, $postId);
