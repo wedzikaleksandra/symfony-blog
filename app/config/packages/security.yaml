@@ -43,7 +43,7 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/login, roles: PUBLIC_ACCESS}
         - { path: ^/, roles: PUBLIC_ACCESS}
-        - { path: ^/create, roles: ROLE_ADMIN }
+        - { path: ^/category/create, roles: ROLE_ADMIN }
 
 
 when@test:
