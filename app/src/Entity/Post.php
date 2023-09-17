@@ -33,7 +33,7 @@ class Post
     #[ORM\Column(type: 'string', length: 64)]
     #[Assert\NotBlank]
     #[Assert\Type('string')]
-    #[Assert\Length(min: 3, max: 64)]
+    #[Assert\Length(min: 2, max: 64)]
     private ?string $title = null;
 
     /**
@@ -41,7 +41,7 @@ class Post
      */
     #[ORM\Column(type: 'string', length: 64)]
     #[Assert\Type('string')]
-    #[Assert\Length(min: 3, max: 64)]
+    #[Assert\Length(min: 2, max: 64)]
     #[Gedmo\Slug(fields: ['title'])]
     private ?string $slug;
 
