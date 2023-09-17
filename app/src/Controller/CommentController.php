@@ -104,7 +104,7 @@ class CommentController extends AbstractController
     {
         $postId = $request->query->getInt('id');
 
-        if (!$postId){
+        if (!$postId) {
             return $this->redirectToRoute('post_index');
         }
 

@@ -1,5 +1,18 @@
+   1) src/Controller/CommentController.php (curly_braces_position)
 
-Found 0 of 39 files that can be fixed in 0.852 seconds, 18.000 MB memory used
+Found 1 of 39 files that can be fixed in 0.818 seconds, 18.000 MB memory used
+
+FILE: /home/wwwroot/app/src/Controller/CommentController.php
+--------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+--------------------------------------------------------------------------
+ 107 | ERROR | [x] Expected 1 space(s) after closing parenthesis; found 0
+--------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+--------------------------------------------------------------------------
+
+Time: 1.21 secs; Memory: 12MB
+
  ------- -------- ---- ---------------------- 
   State   Domain   Id   Message Preview (en)  
  ------- -------- ---- ---------------------- 
@@ -9,7 +22,7 @@ Found 0 of 39 files that can be fixed in 0.852 seconds, 18.000 MB memory used
  ------- -------- ---- ---------------------- ------------------------------- 
 
 [notice] Migrating up to DoctrineMigrations\Version20230917113629
-[notice] finished in 178.7ms, used 22M memory, 1 migrations executed, 7 sql queries
+[notice] finished in 351.9ms, used 22M memory, 1 migrations executed, 7 sql queries
 
  [OK] Successfully migrated to version : DoctrineMigrations\Version20230917113629                                       
 
