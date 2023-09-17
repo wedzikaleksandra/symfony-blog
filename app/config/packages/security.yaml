@@ -41,9 +41,11 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/category/create, roles: ROLE_ADMIN }
+        - { path: ^/post/create, roles: ROLE_ADMIN }
         - { path: ^/login, roles: PUBLIC_ACCESS}
         - { path: ^/, roles: PUBLIC_ACCESS}
-        - { path: ^/category/create, roles: ROLE_ADMIN }
+
 
 
 when@test:
