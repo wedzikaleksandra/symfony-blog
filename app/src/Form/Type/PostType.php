@@ -43,7 +43,7 @@ class PostType extends AbstractType
                     new NotBlank(),
                     new Length(
                         [
-                            'min' => 3,
+                            'min' => 2,
                             'max' => 64,
                         ]
                     ),

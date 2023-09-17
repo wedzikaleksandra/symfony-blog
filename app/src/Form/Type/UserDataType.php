@@ -42,7 +42,7 @@ class UserDataType extends AbstractType
                     new NotBlank(),
                     new Length(
                         [
-                            'min' => 3,
+                            'min' => 2,
                             'max' => 64,
                         ]
                     ),
@@ -60,7 +60,7 @@ class UserDataType extends AbstractType
                     new NotBlank(),
                     new Length(
                         [
-                            'min' => 3,
+                            'min' => 2,
                             'max' => 64,
                         ]
                     ),
